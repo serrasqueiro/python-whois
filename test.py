@@ -1,6 +1,11 @@
+#!/usr/bin/python3
 import whois
 
 DOMAINS = '''
+    dot.ml
+    example.com
+    mphimmoitv.com
+    phimchill.tv
     netsec.ninja
     test.education
     doramy.club
@@ -15,6 +20,8 @@ DOMAINS = '''
     digg.com
     imdb.com
     microsoft.com
+    office.com
+    python.org
     www.google.org
     ddarko.org
     google.net
@@ -38,7 +45,9 @@ DOMAINS = '''
     google.it
     google.cz
     google.fr
-    dfsdfsfsdf
+    google.nl
+    google.cat
+    google.com.vn
     test.ez.lv
     google.store
     kono.store
@@ -83,6 +92,39 @@ DOMAINS = '''
     google.is
     afilias.com.au
     jisc.ac.uk
+    google.com.au
+    register.bank
+    yandex.ua
+    google.ca
+    google.mu
+    google.rw
+    tut.by
+    guinness.ie
+    google.com.tr
+    google.sale
+    google.link
+    google.game
+    google.trade
+    google.ink
+    google.pub
+    google.im
+    google.am
+    google.fm
+    google.hk
+    google.cr
+    google.global
+    google.co.il
+    google.pt
+    youtube.com
+    youtu.be
+    belgium.com
+    america.com
+    elcomercio.pe
+    terra.com.pe
+    amazon.study
+    amazon.courses
+    google.aw
+    karibu.tz
 '''
 
 failure = list()
@@ -115,7 +157,8 @@ for d in DOMAINS.split('\n'):
             message = """
             Error : {},
             On Domain: {}
-            """.format(str(e),d)
+            """.format(str(e), d)
+            print(message)
 
 for d in invalidTld.split('\n'):
     if d:
@@ -128,7 +171,7 @@ for d in invalidTld.split('\n'):
             message = """
             Error : {},
             On Domain: {}
-            """.format(str(e),d)
+            """.format(str(e), d)
             print('Caught UnknownTld Exception')
             print(e)
 
@@ -143,7 +186,7 @@ for d in failedParsing.split('\n'):
             message = """
             Error : {},
             On Domain: {}
-            """.format(str(e),d)
+            """.format(str(e), d)
             print('Caught FailedParsingWhoisOutput Exception')
             print(e)
 
@@ -158,7 +201,7 @@ for d in unknownDateFormat.split('\n'):
             message = """
             Error : {},
             On Domain: {}
-            """.format(str(e),d)
+            """.format(str(e), d)
             print('Caught UnknownDateFormat Exception')
             print(e)
 
@@ -166,6 +209,6 @@ for d in unknownDateFormat.split('\n'):
 report_str = """
 Failure during test : {}
 Domains : {}
-""".format(len(failure),failure)
+""".format(len(failure), failure)
 message = '\033[91m' + report_str + '\x1b[0m'
 print(message)
